@@ -22,6 +22,13 @@ export default function App() {
     setJudulTugas("");
   }
 
+  function hapusTugas(tugasYangDihapus) {
+    let listTugas_temporary = [...listTugas].filter(
+      (tugas) => tugas !== tugasYangDihapus
+    );
+    setListTugas(listTugas_temporary);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.form__area}>
@@ -47,7 +54,10 @@ export default function App() {
         return (
           <View style={styles.task__list}>
             <Text>{item}</Text>
-            <TouchableOpacity style={styles.task__list__button__delete}>
+            <TouchableOpacity
+              style={styles.task__list__button__delete}
+              onPress={() => hapusTugas(item)}
+            >
               <Text style={{ fontSize: 10 }}>Hapus</Text>
             </TouchableOpacity>
           </View>
