@@ -10,9 +10,15 @@ import {
 
 export default function App() {
   const [judulTugas, setJudulTugas] = useState("");
+  const [listTugas, setListTugas] = useState([]);
 
   function simpanTugas() {
-    alert(judulTugas);
+    let listTugas_temporary = [...listTugas];
+
+    listTugas_temporary.push(judulTugas);
+
+    setListTugas(listTugas_temporary);
+
     setJudulTugas("");
   }
 
@@ -37,12 +43,16 @@ export default function App() {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.task__list}>
-        <Text>Contoh Judul Tugas</Text>
-        <TouchableOpacity style={styles.task__list__button__delete}>
-          <Text style={{ fontSize: 10 }}>Hapus</Text>
-        </TouchableOpacity>
-      </View>
+      {listTugas.map((item) => {
+        return (
+          <View style={styles.task__list}>
+            <Text>{item}</Text>
+            <TouchableOpacity style={styles.task__list__button__delete}>
+              <Text style={{ fontSize: 10 }}>Hapus</Text>
+            </TouchableOpacity>
+          </View>
+        );
+      })}
     </View>
   );
 }
