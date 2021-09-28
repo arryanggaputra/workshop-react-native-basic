@@ -33,6 +33,12 @@ export default function App() {
     AsyncStorage.setItem("daftarTugasStorage", JSON.stringify(listTugas || []));
   }, [listTugas]);
 
+  useEffect(() => {
+    AsyncStorage.getItem("daftarTugasStorage").then((result) => {
+      setListTugas(JSON.parse(result) || []);
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.form__area}>
