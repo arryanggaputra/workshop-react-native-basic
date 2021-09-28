@@ -9,16 +9,30 @@ import {
 } from "react-native";
 
 export default function App() {
+  const [judulTugas, setJudulTugas] = useState("");
+
+  function simpanTugas() {
+    alert(judulTugas);
+    setJudulTugas("");
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.form__area}>
         <Text style={styles.form__area__title}>Tugas Harian</Text>
         <TextInput
+          onChangeText={(value) => {
+            setJudulTugas(value);
+          }}
+          value={judulTugas}
           style={styles.form__area__input}
           placeholder="Masukan Judul Tugas"
         />
 
-        <TouchableOpacity style={styles.form__area__button}>
+        <TouchableOpacity
+          onPress={simpanTugas}
+          style={styles.form__area__button}
+        >
           <Text style={styles.form__area__button__text}>Simpan</Text>
         </TouchableOpacity>
       </View>
