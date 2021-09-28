@@ -29,6 +29,15 @@ export default function App() {
     setListTugas(listTugas_temporary);
   }
 
+  useEffect(() => {
+    if (listTugas.length > 0) {
+      AsyncStorage.setItem(
+        "daftarTugasStorage",
+        JSON.stringify(listTugas || [])
+      );
+    }
+  }, [listTugas]);
+
   return (
     <View style={styles.container}>
       <View style={styles.form__area}>
