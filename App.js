@@ -30,14 +30,14 @@ export default function App() {
   }
 
   useEffect(() => {
-    AsyncStorage.setItem("daftarTugasStorage", JSON.stringify(listTugas || []));
-  }, [listTugas]);
-
-  useEffect(() => {
     AsyncStorage.getItem("daftarTugasStorage").then((result) => {
       setListTugas(JSON.parse(result) || []);
     });
   }, []);
+
+  useEffect(() => {
+    AsyncStorage.setItem("daftarTugasStorage", JSON.stringify(listTugas || []));
+  }, [listTugas]);
 
   return (
     <View style={styles.container}>
