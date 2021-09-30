@@ -30,12 +30,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    if (listTugas.length > 0) {
-      AsyncStorage.setItem(
-        "daftarTugasStorage",
-        JSON.stringify(listTugas || [])
-      );
-    }
+    AsyncStorage.setItem("daftarTugasStorage", JSON.stringify(listTugas || []));
   }, [listTugas]);
 
   return (
